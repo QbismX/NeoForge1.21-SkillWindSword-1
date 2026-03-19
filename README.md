@@ -1,25 +1,6 @@
-
-Installation information
-=======
-
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
-
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
-
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
-
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
-
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+斬撃をあらゆる角度から確認できるようにコマンドも用意しています。
+当たり判定の計算に分離軸定理を用いています。(久しぶりにベクトルを復習したので、正しく使えているかどうかはあまり自信はありません)
+斬撃は少し斜めに傾けています。これは、斬撃のゲーム性に関わる攻撃者と斬撃を迎え撃つプレイヤーが、その斬撃を視認できるようにするためです。
+飛ぶ斬撃が360度見えるような工夫はしていません。現在は、ゲーム性に関わるプレイヤーのみに斬撃が視認できれば面白さは損なわれないと考察しており、その分軽い処理で実装したいと考えています。
+斬撃は盾で防ぎ消すことができます。防げなかった場合は貫通して、後ろにいるエンティティにダメージを与えます。
+ノックバックなどで吹き飛ばすことはできないと思います。(多分)
