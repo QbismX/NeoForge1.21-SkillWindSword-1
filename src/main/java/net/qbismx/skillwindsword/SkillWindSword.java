@@ -1,7 +1,9 @@
 package net.qbismx.skillwindsword;
 
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.qbismx.skillwindsword.client.particle.LightParticleProvider;
+import net.qbismx.skillwindsword.command.ShootSlashCommand;
 import net.qbismx.skillwindsword.entity.ModEntities;
 import net.qbismx.skillwindsword.network.ModNetwork;
 import net.qbismx.skillwindsword.registry.ModParticles;
@@ -55,7 +57,9 @@ public class SkillWindSword {
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
+        NeoForge.EVENT_BUS.addListener(this::onRegisterCommands);
         NeoForge.EVENT_BUS.register(this);
+
 
         ModEntities.register(modEventBus);
         ModParticles.register(modEventBus);
@@ -99,5 +103,10 @@ public class SkillWindSword {
                     LightParticleProvider::new
             );
         }
+    }
+
+    // コマンド用
+    private void onRegisterCommands(RegisterCommandsEvent event) {
+        ShootSlashCommand.register(event.getDispatcher());
     }
 }
