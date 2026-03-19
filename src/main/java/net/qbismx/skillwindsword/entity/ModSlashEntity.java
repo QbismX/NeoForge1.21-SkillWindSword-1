@@ -1,6 +1,7 @@
 package net.qbismx.skillwindsword.entity;
 
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -35,11 +36,12 @@ public class ModSlashEntity extends Projectile {
     }
 
     // コマンドで呼び出された斬撃用のコンストラクタ
-    public ModSlashEntity(Level level, Vec3 pos, Vec3 dir) {
+    public ModSlashEntity(Level level, Vec3 pos, Vec3 dir, ServerPlayer player) {
         this(ModEntities.SLASH.get(), level);
         this.setPos(pos);
         Vec3 velocity = dir.normalize().scale(0.5);
         this.setDeltaMovement(velocity);
+        this.setOwner(player);
     }
 
     @Override
@@ -95,6 +97,7 @@ public class ModSlashEntity extends Projectile {
         } else {
             // 攻撃したプレイヤー
             Entity owner = getOwner();
+            if (owner != null) {
 
                 //　当たり判定計算の空間の設定
                 AABB box = getBoundingBox().inflate(LENGTH);
@@ -142,19 +145,18 @@ public class ModSlashEntity extends Projectile {
                             }
 
                         } else {
-                            if (owner != null) {
                                 // ダメージ判定
                                 target.hurt(
                                         damageSources().mobAttack((LivingEntity) owner),
                                         2.0F
                                 );
                                 hitEntities.add(target.getId());
-                            }
                         }
-
-                    } // 当たり判定計算終了
+                    }// 当たり判定計算終了
 
                 } // 各ターゲットの当たり判定計算終了
+
+            }
         }
 
         if (tickCount > 30) this.discard(); // tick=41で消える
