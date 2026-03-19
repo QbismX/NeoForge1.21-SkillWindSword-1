@@ -1,6 +1,5 @@
 package net.qbismx.skillwindsword.network;
 
-import jdk.jfr.Event;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -11,7 +10,6 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.qbismx.skillwindsword.SkillWindSword;
 import net.qbismx.skillwindsword.entity.ModSlashEntity;
-import org.apache.logging.log4j.core.jmx.Server;
 
 @EventBusSubscriber(modid = SkillWindSword.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class ModNetwork {

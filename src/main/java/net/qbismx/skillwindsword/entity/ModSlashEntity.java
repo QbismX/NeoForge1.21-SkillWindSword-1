@@ -54,21 +54,7 @@ public class ModSlashEntity extends Projectile {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        /*
-        Entity entity = result.getEntity();
-        Entity owner = getOwner();
 
-        if (entity instanceof LivingEntity target && owner instanceof LivingEntity livingOwner) {
-
-
-            target.hurt(
-                    damageSources().mobAttack(livingOwner),
-                    8.0F
-            );
-
-            hitEntities.add(target.getId());
-        }
-         */
     }
 
     @Override
