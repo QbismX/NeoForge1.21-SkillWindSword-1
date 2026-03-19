@@ -6,7 +6,6 @@ import net.minecraft.commands.Commands;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.phys.Vec3;
-import net.qbismx.skillwindsword.client.renderer.SlashRenderer;
 import net.qbismx.skillwindsword.entity.ModSlashEntity;
 
 public class ShootSlashCommand {
